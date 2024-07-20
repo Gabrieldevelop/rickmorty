@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/css/main.css" />
+    <script type="module" defer src="src/js/controller.js"></script>
+    <title>rick</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <aside>
+        <header>
+          <h1 class="title">Rick<span>App</span></h1>
+          <img
+            src="src/imgs/menu-icon.svg"
+            alt="menu-icon"
+            class="menu__icon"
+          />
+        </header>
+        <hr />
+
+        <form>
+          <input
+            list="character_list"
+            name="character"
+            placeholder="search a character"
+            class="form_control search_input"
+          />
+
+          <input
+            list="character_status"
+            name="status"
+            placeholder="status"
+            class="form_control input_status"
+          />
+
+          <input
+            list="character_specie"
+            name="specie"
+            placeholder="specie"
+            class="form_control specie_input"
+          />
+
+          <datalist id="character_list">
+            <option value="rick"></option>
+            <option value="morty"></option>
+            <option value="otro"></option>
+            <option value="Strawberry"></option>
+            <option value="Vanilla"></option>
+          </datalist>
+
+          <datalist id="character_status">
+            <option value="alive"></option>
+            <option value="dead"></option>
+          </datalist>
+
+          <datalist id="character_specie">
+            <option value="humanoid"></option>
+            <option value="robot"></option>
+            <option value="animal"></option>
+            <option value="human"></option>
+          </datalist>
+
+          <button class="btn btn__search">Search</button>
+        </form>
+      </aside>
+      <main>
+        <section class="welcome__section">
+          <h2 class="welcome__message">Welcome to Rick & Morty APP</h2>
+          <div class="cardsContainer"></div>
+        </section>
+        <section class="search_results">
+          <h2>Your results will appear here</h2>
+          <br />
+          <div class="results__characters-container">
+            <div class="card">
+              <div class="image">
+                <img src="./src/imgs/test-img.jpg" alt="Rich image" />
+              </div>
+              <div class="content">
+                <h3>Title character</h3>
+              </div>
+            </div>
+            <div class="card">
+              <div class="image">
+                <img src="./src/imgs/test-img.jpg" alt="Rich image" />
+              </div>
+              <div class="content">
+                <h3>Title character</h3>
+              </div>
+            </div>
+            <div class="card">
+              <div class="image">
+                <img src="./src/imgs/test-img.jpg" alt="Rich image" />
+              </div>
+              <div class="content">
+                <h3>Title character</h3>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
