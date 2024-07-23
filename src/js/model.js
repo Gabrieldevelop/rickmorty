@@ -22,29 +22,18 @@ export const loadIntroCharacters = async function (character1, character2) {
   }
 };
 
-/* https://rickandmortyapi.com/api/character/?name=rick&status=alive
- */
-
-/* https://myexample.com/api?name=value1&status=value2&species=value3&type=value4&gender=value5
- */
-
-/* name, statys, species */
-
-export const searchCharacter = async function (name, status, gender) {
+export const filterCharacters = async function (name, status, specie) {
   try {
-    const character = await getJSON(
-      `${API_URL}/character/?name=${name}&status=${status}&gender=${gender}`
+    const characters = await getJSON(
+      `${API_URL}/character/?name=${name}&status=${status}&species=${specie}`
     );
-    console.log(character);
+
+    // Create results property that contains results from API
+    state.results = characters ? (state.results = characters.results) : null;
+
+    // console.log(characters);
+    console.log(state.results, 'HOLA');
   } catch (error) {
     console.log(error.message);
   }
 };
-
-// searchCharacter();
-
-/* 
-Style all the inputs fields
-Do some test of the api
-Style the new cards and make them responsive 
-*/

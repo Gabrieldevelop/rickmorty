@@ -20,3 +20,5 @@ export const getSecondID = function () {
   const secondID = Math.floor(Math.random() * 826);
   return String(secondID);
 };
+
+// Form handler
