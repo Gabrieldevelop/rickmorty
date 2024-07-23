@@ -2,6 +2,9 @@ class Intro {
   _cardsContainer = document.querySelector('.cardsContainer');
   _form = document.querySelector('.myForm');
   _resultsCharacter = document.querySelector('.results__characters-container');
+  _aside = document.querySelector('aside');
+  _main = document.querySelector('main');
+  _menuIcon = document.querySelector('.menu__icon');
 
   renderIntrocharacters(data) {
     let markup = data.map(this.generateIntroMarkup).join(' ');
@@ -86,6 +89,13 @@ class Intro {
 
   cleanUI() {
     this._resultsCharacter.textContent = '';
+  }
+
+  asideTogle() {
+    this._menuIcon.addEventListener('click', () => {
+      this._aside.classList.toggle('hidden');
+      this._main.classList.toggle('spand');
+    });
   }
 }
 

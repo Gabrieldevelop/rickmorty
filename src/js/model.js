@@ -16,9 +16,9 @@ export const loadIntroCharacters = async function (character1, character2) {
     state.introCharacters.push(data[0]);
     state.introCharacters.push(data[1]);
 
-    console.log(state.introCharacters);
+    // console.log(state.introCharacters);
   } catch (error) {
-    console.log(`Something bad happened ${error.message}`);
+    console.log(`${error.message}`);
   }
 };
 
@@ -32,7 +32,7 @@ export const filterCharacters = async function (name, status, specie) {
     state.results = characters ? (state.results = characters.results) : null;
 
     // console.log(characters);
-    console.log(state.results, 'HOLA');
+    // console.log(state.results, 'HOLA');
   } catch (error) {
     console.log(error.message);
   }
