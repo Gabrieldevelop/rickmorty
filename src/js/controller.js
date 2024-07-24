@@ -34,6 +34,10 @@ const init = async function () {
 
   // Aside functionality
   introView.asideTogle();
+
+  // Bookmarks functionality
+  introView.showBookmarks();
+  introView.hideBookmarks();
 };
 
 init();

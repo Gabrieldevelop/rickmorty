@@ -1,6 +1,7 @@
 :root {
   --white: #fff;
   --low-black: #222;
+  --gold: #ffd700;
   /* --card-bg: #202329; */
 }
 
@@ -13,12 +14,9 @@ aside {
   color: var(--white);
   padding: 20px;
   height: 100%;
-}
-
-aside header {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
 }
 
 aside form {
@@ -44,7 +42,7 @@ aside form .btn__search {
   padding: 10px 20px;
   width: 100%;
   border-radius: 10px;
-  background: gold;
+  background: var(--gold);
   color: var(--low-black);
   outline: none;
   border: none;
@@ -54,12 +52,6 @@ aside form .btn__search {
 
 aside.hidden {
   display: none;
-}
-
-.menu__icon {
-  width: 40px;
-  cursor: pointer;
-  margin: 10px;
 }
 
 main {
@@ -75,6 +67,56 @@ main.spand {
 
 main .welcome__section {
   background: #191a1d;
+}
+
+main .welcome__section .menu__icon--container {
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.menu__icon--container .bookmarks {
+  position: absolute;
+  left: 5rem;
+  top: 5rem;
+  max-height: 400px;
+  width: 350px;
+  padding: 10px;
+  overflow-y: scroll;
+  background-color: var(--white);
+  z-index: 2;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: none;
+}
+
+.menu__icon--container .bookmarks.showed {
+  display: block;
+}
+
+.menu__icon--container .bookmarks .bookmark__message {
+  text-align: center;
+}
+
+.menu__icon {
+  width: 40px;
+  cursor: pointer;
+  margin: 10px;
+  transition: transform 0.5s ease;
+}
+
+.menu__icon:hover {
+  transform: scale(0.8);
+}
+
+.bookmark__icon {
+  width: 30px;
+  cursor: pointer;
+  transition: transform 0.8s ease;
+}
+
+.bookmark__icon:hover {
+  transform: rotate(180deg);
 }
 
 main .welcome__message {
@@ -224,6 +266,15 @@ main .results__characters-container .card .content {
 
 main .results__characters-container .card .content .section:not(:last-child) {
   margin-bottom: 10px;
+}
+
+footer .footer__rights {
+  font-size: 1.3rem;
+}
+
+footer .footer__rights a {
+  text-decoration: none;
+  color: var(--gold);
 }
 
 /* Responsiveness */

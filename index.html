@@ -16,60 +16,66 @@
   <body>
     <div id="wrapper">
       <aside>
-        <header>
-          <h1 class="title">Rick<span>App</span></h1>
-          <!--  <img
-            src="src/imgs/menu-icon.svg"
-            alt="menu-icon"
-            class="menu__icon"
-          /> -->
-        </header>
-        <hr />
+        <section class="upside__content">
+          <header>
+            <h1 class="title">Rick<span>App</span></h1>
+          </header>
+          <br />
+          <hr />
 
-        <form class="myForm">
-          <input
-            list="character_list"
-            name="character"
-            placeholder="search a character"
-            class="form_control search_input"
-          />
+          <form class="myForm">
+            <input
+              list="character_list"
+              name="character"
+              placeholder="search a character"
+              class="form_control search_input"
+            />
 
-          <input
-            list="character_status"
-            name="status"
-            placeholder="status"
-            class="form_control input_status"
-          />
+            <input
+              list="character_status"
+              name="status"
+              placeholder="status"
+              class="form_control input_status"
+            />
 
-          <input
-            list="character_specie"
-            name="specie"
-            placeholder="specie"
-            class="form_control specie_input"
-          />
+            <input
+              list="character_specie"
+              name="specie"
+              placeholder="specie"
+              class="form_control specie_input"
+            />
 
-          <datalist id="character_list">
-            <option value="Rick"></option>
-            <option value="Morty"></option>
-            <option value="Commander Rick"></option>
-            <option value="Spaceman"></option>
-            <option value="Summer Smith"></option>
-          </datalist>
+            <datalist id="character_list">
+              <option value="Rick"></option>
+              <option value="Morty"></option>
+              <option value="Commander Rick"></option>
+              <option value="Spaceman"></option>
+              <option value="Summer Smith"></option>
+            </datalist>
 
-          <datalist id="character_status">
-            <option value="alive"></option>
-            <option value="dead"></option>
-          </datalist>
+            <datalist id="character_status">
+              <option value="alive"></option>
+              <option value="dead"></option>
+            </datalist>
 
-          <datalist id="character_specie">
-            <option value="humanoid"></option>
-            <option value="robot"></option>
-            <option value="animal"></option>
-            <option value="human"></option>
-          </datalist>
+            <datalist id="character_specie">
+              <option value="humanoid"></option>
+              <option value="robot"></option>
+              <option value="animal"></option>
+              <option value="human"></option>
+            </datalist>
 
-          <button class="btn btn__search">Search</button>
-        </form>
+            <button class="btn btn__search">Search</button>
+          </form>
+        </section>
+
+        <footer>
+          <p class="footer__rights">
+            Made with ❤️ by <strong>&copy; 2024 Raymer Gabriel.</strong>
+            This website use an API from
+            <a href="https://rickandmortyapi.com/" target="_blank">Provider</a>
+          </p>
+        </footer>
       </aside>
       <main>
         <section class="welcome__section">
@@ -79,6 +85,20 @@
               alt="menu-icon"
               class="menu__icon"
             />
+            <img
+              src="src/imgs/bookmark-icon.svg"
+              alt="Icon for bookmark an character"
+              class="bookmark__icon"
+              title="Bookmarked characters"
+            />
+            <div class="bookmarks">
+              <ul class="bookmarks__container">
+                <!-- <li>TEST</li> -->
+              </ul>
+              <div class="bookmark__message">
+                <h2>Nothing bookmarked yet :)</h2>
+              </div>
+            </div>
           </div>
 
           <h2 class="welcome__message">Welcome to Rick & Morty APP</h2>

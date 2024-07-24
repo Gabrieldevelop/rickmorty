@@ -5,6 +5,8 @@ class Intro {
   _aside = document.querySelector('aside');
   _main = document.querySelector('main');
   _menuIcon = document.querySelector('.menu__icon');
+  _bookmarkIcon = document.querySelector('.bookmark__icon');
+  _bookmarks = document.querySelector('.bookmarks');
 
   renderIntrocharacters(data) {
     let markup = data.map(this.generateIntroMarkup).join(' ');
@@ -95,6 +97,20 @@ class Intro {
     this._menuIcon.addEventListener('click', () => {
       this._aside.classList.toggle('hidden');
       this._main.classList.toggle('spand');
+    });
+  }
+
+  showBookmarks() {
+    this._bookmarkIcon.addEventListener('mouseenter', () => {
+      this._bookmarks.classList.add('showed');
+    });
+  }
+
+  hideBookmarks() {
+    this._bookmarkIcon.addEventListener('click', () => {
+      if (this._bookmarks.classList.contains('showed')) {
+        this._bookmarks.classList.remove('showed');
+      }
     });
   }
 }

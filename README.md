@@ -2,8 +2,6 @@
 
 ## App features
 
-- Sidebar implementation
-
 - Create an algorithmic where I store the characters that has been already loaded in the page,
   so I do not load these characters again. Then each time the user open the web, there will be some characters loaded.
   1- When user search for characters, save these to localStorage
@@ -17,5 +15,3 @@
 - Load all characters and pagination
   1- User know will can load all character by clicking a button
   2- Will have the functionaly of pagination, this mean there will be btns to go fordward or backwards
-
-- Update the UI with GRID.
