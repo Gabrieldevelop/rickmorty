@@ -7,6 +7,8 @@ class Intro {
   _menuIcon = document.querySelector('.menu__icon');
   _bookmarkIcon = document.querySelector('.bookmark__icon');
   _bookmarks = document.querySelector('.bookmarks');
+  _bookmarksContainer = document.querySelector('.bookmarks__container');
+  _bookmarksMessage = document.querySelector('.bookmark__message');
 
   renderIntrocharacters(data) {
     let markup = data.map(this.generateIntroMarkup).join(' ');
@@ -51,6 +53,11 @@ class Intro {
               <div class="content">
                 <div class="section character__name">
                   <h3 class="character__title">${character.name}</h3>
+                  <img  src="src/imgs/bookmark-icon.svg" 
+                        alt="Bookmar a character"/ 
+                        title="Bookmark"
+                        class="save__character--icon save-character"
+                        data-id="${character.id}">
                 </div>
                 <div class="section character__status">
                   <h3 class="status">
@@ -59,10 +66,10 @@ class Intro {
                         ? 'status__sign--green'
                         : character.status === 'Dead'
                         ? 'status__sign--red'
-                        : character.status === 'Unknown'
-                        ? ''
                         : ''
-                    }" title="Character status"></span>
+                    }" title="Character status">
+                    ${character.status === 'unknown' ? '| Unknown' : ''}
+                    </span>
                   </h3>
                 </div>
                 <div class="section character__gender">
@@ -95,24 +102,103 @@ class Intro {
 
   asideTogle() {
     this._menuIcon.addEventListener('click', () => {
-      this._aside.classList.toggle('hidden');
+      this._aside.classList.toggle('active');
       this._main.classList.toggle('spand');
-    });
-  }
 
-  showBookmarks() {
-    this._bookmarkIcon.addEventListener('mouseenter', () => {
-      this._bookmarks.classList.add('showed');
-    });
-  }
-
-  hideBookmarks() {
-    this._bookmarkIcon.addEventListener('click', () => {
       if (this._bookmarks.classList.contains('showed')) {
         this._bookmarks.classList.remove('showed');
       }
     });
   }
+
+  showBookmarks() {
+    this._bookmarkIcon.addEventListener('click', () => {
+      this._bookmarks.classList.toggle('showed');
+    });
+  }
+
+  renderBookmarks(bookmarks) {
+    this._bookmarksContainer.innerHTML = '';
+    if (bookmarks.length === 0) this._bookmarksMessage.classList.add('show');
+    else this._bookmarksMessage.classList.remove('show');
+
+    const markup = bookmarks.map(this.generateMarkupBookmarks).join('');
+    this._bookmarksContainer.insertAdjacentHTML('afterbegin', markup);
+  }
+
+  generateMarkupBookmarks(character) {
+    if (!character) {
+      console.log('No character');
+    }
+    return `
+     <li>
+        <img
+          src="${character.image}"
+          width="100px"
+          max-height="400px"
+          alt="Image of character${character.name}"
+        />
+        <div class="character__section--container">
+          <div class="section character__name">
+            <h3 class="character__title">${character.name}</h3>
+            <img
+              src="src/imgs/bookmark-icon.svg"
+              alt="Bookmar a character"
+              title="unbookmark"
+              class="save__character--icon"
+              data-id="${character.id}"
+            />
+          </div>
+          <div class="section character__info">
+            <h3 class="status">
+                    Status <span class="status__sign ${
+                      character.status === 'Alive'
+                        ? 'status__sign--green'
+                        : character.status === 'Dead'
+                        ? 'status__sign--red'
+                        : ''
+                    }" title="Character status">
+                    ${character.status === 'unknown' ? '| Unknown' : ''}
+                    </span>
+                  </h3>
+            <h3 class="character__subtitle">
+              Last know location
+              <br />
+              <span class="detail">${character.location.name}</span>
+            </h3>
+          </div>
+        </div>
+      </li>
+    `;
+  }
+
+  addHandlerAddBookmark(handler) {
+    this._resultsCharacter.addEventListener('click', function (e) {
+      // Targetting the btn
+      const btn = e.target.closest('.save__character--icon');
+      if (!btn) return;
+      const characterID = btn.dataset.id;
+      handler(characterID);
+    });
+  }
+
+  addHandlerRemoveBookmark(handler) {
+    this._bookmarksContainer.addEventListener('click', function (e) {
+      // Targetting the btn
+      const btn = e.target.closest('.save__character--icon');
+      if (!btn) return;
+      const characterID = btn.dataset.id;
+      handler(characterID);
+    });
+  }
+
+  /*   renderErrorMessage(message) {
+    return `
+      <div class="error__message">
+          An error has occurred ${message}
+      </div>
+    `;
+  } */
 }
 
 export default new Intro();

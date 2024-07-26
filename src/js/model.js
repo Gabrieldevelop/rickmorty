@@ -3,6 +3,8 @@ import { API_URL } from './utils/config.js';
 
 export const state = {
   introCharacters: [],
+  results: [],
+  bookmarks: [],
 };
 
 export const loadIntroCharacters = async function (character1, character2) {
@@ -15,10 +17,9 @@ export const loadIntroCharacters = async function (character1, character2) {
     // Because data is an array
     state.introCharacters.push(data[0]);
     state.introCharacters.push(data[1]);
-
-    // console.log(state.introCharacters);
   } catch (error) {
     console.log(`${error.message}`);
+    // throw error;
   }
 };
 
@@ -28,12 +29,46 @@ export const filterCharacters = async function (name, status, specie) {
       `${API_URL}/character/?name=${name}&status=${status}&species=${specie}`
     );
 
+    if (!characters) throw new Error('Nothing found, try with another data');
+
     // Create results property that contains results from API
     state.results = characters ? (state.results = characters.results) : null;
 
     // console.log(characters);
-    // console.log(state.results, 'HOLA');
+    // console.log(state.results);
   } catch (error) {
     console.log(error.message);
+    throw error;
+  }
+};
+
+export const addBookmark = function (character) {
+  if (state.bookmarks.some((bookmark) => bookmark.id === character.id)) return;
+
+  state.bookmarks.push(character);
+
+  // console.log(state.bookmarks);
+
+  // Update localStorage
+  persistCharacters();
+};
+
+export const removeBookmark = function (id) {
+  const index = state.bookmarks.findIndex((bookmark) => bookmark.id === id);
+
+  if (index !== -1) state.bookmarks.splice(index, 1);
+
+  // Update localStorage
+  persistCharacters();
+};
+
+const persistCharacters = function () {
+  localStorage.setItem('ch', JSON.stringify(state.bookmarks));
+};
+
+export const loadBookmarkedCharacters = function () {
+  if (localStorage.getItem('ch')) {
+    const characters = localStorage.getItem('ch');
+    state.bookmarks = JSON.parse(characters);
   }
 };
