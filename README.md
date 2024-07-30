@@ -10,17 +10,4 @@
   2- If user search other characters again, update localStorage with new characters
   3- If user close the web, then user enter again, update the UI with the localStorage characters.
 
-- Load all characters and pagination
-  1- User know will can load all character by clicking a button
-  2- Will have the functionaly of pagination, this mean there will be btns to go fordward or backwards
-
-- Implement errors handlers
-
-* Show messages when no characters are found
-  When user hit search BTN, load "Searching", if the request is ok and the state has characters, then change searching for 'Loaded ✅'.
-
-If there occurs an error while looking for these characters, then render "Try again"
-
-- Add custom messages when user add/remove a bookmark
-
-* Improve accesibility
+## Current version 2.0 🤗

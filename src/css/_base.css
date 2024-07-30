@@ -2,7 +2,9 @@
   --white: #fff;
   --low-black: #222;
   --gold: #ffd700;
-  /* --card-bg: #202329; */
+  --status-alive: #00c500;
+  --status-dead: #ff0000;
+  --sub-bg: #202329;
 }
 
 .character__title {
@@ -42,7 +44,7 @@
   height: 10px;
   width: 10px;
   border-radius: 50%;
-  background: #00c500;
+  background: var(--status-alive);
   position: absolute;
   right: -20px;
   top: 30%;
@@ -53,7 +55,7 @@
   height: 10px;
   width: 10px;
   border-radius: 50%;
-  background: red;
+  background: var(--status-dead);
   position: absolute;
   right: -20px;
   top: 30%;
@@ -180,7 +182,7 @@ main .welcome__section .menu__icon--container {
 }
 
 .bookmarks::-webkit-scrollbar-thumb:hover {
-  background: #202329;
+  background: var(--sub-bg);
 }
 
 .menu__icon--container .bookmarks.showed {
@@ -199,7 +201,7 @@ main .welcome__section .menu__icon--container {
 .menu__icon--container .bookmarks .bookmarks__container li {
   display: flex;
   flex-wrap: wrap;
-  background-color: #202329;
+  background-color: var(--sub-bg);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
@@ -294,7 +296,7 @@ main .cardsContainer .character__card .character__image img {
 main .cardsContainer .character__card .character__content {
   flex: 1;
   padding: 15px;
-  background-color: #202329;
+  background-color: var(--sub-bg);
   height: 100%;
   width: 100%;
 }
@@ -327,7 +329,7 @@ main .results__characters-container {
 main .results__characters-container .error__message {
   margin: auto;
   font-size: 2rem;
-  color: red;
+  color: #ff0000;
 }
 
 main .results__characters-container .card {
@@ -348,7 +350,7 @@ main .results__characters-container .card .image img {
 
 main .results__characters-container .card .content {
   min-height: 235px;
-  background-color: #202329;
+  background-color: var(--sub-bg);
   padding: 10px;
 }
 
