@@ -14,12 +14,14 @@ export const loadIntroCharacters = async function (character1, character2) {
       getJSON(`${API_URL}/character/${character2}`),
     ]);
 
+    if (!data) throw new Error('BADDLYY QUERY');
+
     // Because data is an array
     state.introCharacters.push(data[0]);
     state.introCharacters.push(data[1]);
   } catch (error) {
     console.log(`${error.message}`);
-    // throw error;
+    throw error;
   }
 };
 
@@ -31,13 +33,9 @@ export const filterCharacters = async function (name, status, specie) {
 
     if (!characters) throw new Error('Nothing found, try with another data');
 
-    // Create results property that contains results from API
+    // Filling results property that will contain results from API
     state.results = characters ? (state.results = characters.results) : null;
-
-    // console.log(characters);
-    // console.log(state.results);
   } catch (error) {
-    console.log(error.message);
     throw error;
   }
 };
@@ -46,8 +44,6 @@ export const addBookmark = function (character) {
   if (state.bookmarks.some((bookmark) => bookmark.id === character.id)) return;
 
   state.bookmarks.push(character);
-
-  // console.log(state.bookmarks);
 
   // Update localStorage
   persistCharacters();

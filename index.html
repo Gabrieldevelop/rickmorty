@@ -29,6 +29,7 @@
               name="character"
               placeholder="search a character"
               class="form_control search_input"
+              autofocus
             />
 
             <input
@@ -67,6 +68,12 @@
 
             <button class="btn btn__search">Search</button>
           </form>
+
+          <div class="message__status--container role="alert">
+            <div class="message__status">
+              <!-- Error messages will be renderer here -->
+            </div>
+          </div>
         </section>
 
         <footer>
@@ -74,7 +81,6 @@
             Made with ❤️ by <strong>&copy; 2024 Raymer Gabriel.</strong>
             This website use an API from
             <a href="https://rickandmortyapi.com/" target="_blank">Provider</a>
-            I'm on errorhandling branch now again
           </p>
         </footer>
       </aside>
@@ -145,9 +151,7 @@
         <section class="search_results">
           <h2>Your results will appear here</h2>
           <br />
-          <div class="results__characters-container">
-            <!-- <div class="error__message">An error has ocurred</div> -->
-          </div>
+          <div class="results__characters-container"></div>
         </section>
       </main>
     </div>

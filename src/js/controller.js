@@ -3,12 +3,24 @@ import * as model from './model.js';
 import { getFirstID, getSecondID } from './utils/helpers.js';
 
 const controlIntroCharacters = function () {
-  // Render intro characters
   introView.renderIntrocharacters(model.state.introCharacters);
 };
 
 const controlResultsCharacters = async function () {
-  introView.renderCharacters(model.state.results);
+  try {
+    introView.renderLoadingMessage(); // Show loading message
+    const name = document.querySelector('.search_input').value;
+    const status = document.querySelector('.input_status').value;
+    const gender = document.querySelector('.specie_input').value;
+    await model.filterCharacters(
+      name.toLowerCase(),
+      status.toLowerCase(),
+      gender.toLowerCase()
+    );
+    introView.renderCharacters(model.state.results);
+  } catch (error) {
+    introView.renderErrorMessage(`${error.message}`);
+  }
 };
 
 const controlAddBookmark = function (id) {
@@ -25,17 +37,7 @@ const controlRemoveBookmark = function (id) {
 
 const handleFormSubmit = async function (e) {
   e.preventDefault();
-  const name = document.querySelector('.search_input').value;
-  const status = document.querySelector('.input_status').value;
-  const gender = document.querySelector('.specie_input').value;
-
-  await model.filterCharacters(
-    name.toLowerCase(),
-    status.toLowerCase(),
-    gender.toLowerCase()
-  );
-
-  controlResultsCharacters();
+  await controlResultsCharacters();
 };
 
 const init = async function () {
@@ -57,7 +59,6 @@ const init = async function () {
   introView.addHandlerRemoveBookmark(controlRemoveBookmark);
 
   // When page loads, load characters from localStorage
-  // introView.onLoadCharacters(controlLoadBookmarkedCharacters);
   model.loadBookmarkedCharacters();
   introView.renderBookmarks(model.state.bookmarks);
 };

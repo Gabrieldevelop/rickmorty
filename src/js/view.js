@@ -39,7 +39,9 @@ class Intro {
   }
 
   renderCharacters(data) {
+    if (!data || data.length === 0) return this.renderErrorMessage();
     this.cleanUI();
+    this.transferUser();
     let markup = data.map(this.generateMarkupCharacters).join(' ');
     this._resultsCharacter.insertAdjacentHTML('afterbegin', markup);
   }
@@ -98,6 +100,12 @@ class Intro {
 
   cleanUI() {
     this._resultsCharacter.textContent = '';
+    const statusContainer = this._aside.querySelector(
+      '.message__status--container'
+    );
+    // Because we need to re-clean the statusContainer's content
+    statusContainer.textContent = '';
+    statusContainer.style.display = 'none';
   }
 
   asideTogle() {
@@ -127,9 +135,6 @@ class Intro {
   }
 
   generateMarkupBookmarks(character) {
-    if (!character) {
-      console.log('No character');
-    }
     return `
      <li>
         <img
@@ -192,13 +197,40 @@ class Intro {
     });
   }
 
-  /*   renderErrorMessage(message) {
-    return `
-      <div class="error__message">
-          An error has occurred ${message}
-      </div>
-    `;
-  } */
+  transferUser() {
+    if (this._aside.classList.contains('active')) {
+      this._aside.classList.remove('active');
+      this._main.classList.remove('spand');
+    }
+
+    this._resultsCharacter.scrollIntoView({
+      behavior: 'smooth',
+    });
+  }
+
+  renderLoadingMessage() {
+    const statusContainer = this._aside.querySelector(
+      '.message__status--container'
+    );
+    const markup = `<div class="message__status" role="alert"><p>Loading 🔃</p></div>`;
+    statusContainer.style.display = 'block';
+    statusContainer.innerHTML = markup;
+  }
+
+  renderErrorMessage(message) {
+    const statusContainer = this._aside.querySelector(
+      '.message__status--container'
+    );
+
+    const markup = `
+    <div class="message__status" role="alert">
+        <p>${message}</p>
+    </div>`;
+
+    statusContainer.style.display = 'block';
+    // innerHTML will overwrite the statusContainer's content
+    statusContainer.innerHTML = markup;
+  }
 }
 
 export default new Intro();

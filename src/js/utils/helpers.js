@@ -2,11 +2,15 @@
 export const getJSON = async function (url) {
   try {
     const request = await fetch(url);
+
+    if (!request.ok) throw new Error(`Sorry 😿${request.status}`);
     const data = await request.json();
+
     // console.log(data);
+
     return data;
   } catch (error) {
-    throw new Error('Something bad happended while fetching 🤕', error.status);
+    throw error;
   }
 };
 
@@ -20,5 +24,3 @@ export const getSecondID = function () {
   const secondID = Math.floor(Math.random() * 826);
   return String(secondID);
 };
-
-// Form handler

@@ -17,7 +17,10 @@
 - Implement errors handlers
 
 * Show messages when no characters are found
+  When user hit search BTN, load "Searching", if the request is ok and the state has characters, then change searching for 'Loaded ✅'.
 
-* Add custom messages when user add/remove a bookmark
+If there occurs an error while looking for these characters, then render "Try again"
 
-- Improve accesibility
+- Add custom messages when user add/remove a bookmark
+
+* Improve accesibility
