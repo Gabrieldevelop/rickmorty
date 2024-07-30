@@ -273,7 +273,7 @@ main .cardsContainer {
 }
 
 main .cardsContainer .character__card {
-  flex: 1;
+  min-height: 200px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -286,8 +286,8 @@ main .cardsContainer .character__card .character__image {
 }
 
 main .cardsContainer .character__card .character__image img {
-  width: 100%;
-  height: 100%;
+  width: inherit;
+  height: inherit;
   object-fit: cover;
 }
 
