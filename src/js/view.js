@@ -147,7 +147,7 @@ class Intro {
           <div class="section character__name">
             <h3 class="character__title">${character.name}</h3>
             <img
-              src="src/imgs/bookmark-icon.svg"
+              src="/bookmark-icon.75a54d7f.svg"
               alt="Bookmar a character"
               title="unbookmark"
               class="save__character--icon"
