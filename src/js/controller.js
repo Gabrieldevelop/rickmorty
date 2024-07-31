@@ -1,3 +1,6 @@
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
+
 import introView from './view.js';
 import * as model from './model.js';
 import { getFirstID, getSecondID } from './utils/helpers.js';
